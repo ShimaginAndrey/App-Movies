@@ -1,9 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk"
 import rootReducers from "./rootReducers";
 
-const logger = (store) => (next) => (action) => {
-    console.log('logger')
-    next(action);
-}
-
-export const store = createStore(rootReducers, applyMiddleware(logger));
+export const store = createStore(rootReducers, applyMiddleware(thunk));
