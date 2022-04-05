@@ -1,0 +1,27 @@
+@use "~normalize.css" as normalize;
+@use "./vars" as *;
+
+.card-img--height {
+    height: 180px;
+    object-fit: cover;
+}
+
+span {
+    margin-left: 5px;
+}
+
+.invalid-feedback {
+    display: block;
+}
+
+input.invalid {
+    border-color: $error;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.img-movie {
+    width: 600px;
+}
