@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Login from "./Login/Login";
 import UserMenu from './UserMenu';
-import { useSelector } from "react-redux";
 
 const Header = (props) => {
     const {user, session_id, showLoginModal} = props.authInfo;
