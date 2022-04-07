@@ -3,11 +3,9 @@ export const makeRequest = (url, options = {}) => {
         fetch(url, options)
         .then((response) => {
             if(response.ok) return response.json();
-            else throw response;
+            else throw response.json();
         })
         .then(data => resolve(data))
-        .catch(response => {
-            response.json().then(error => reject(error))
-        })
+        .catch(error => reject(error))
     });
 };

@@ -5,7 +5,7 @@ import thunk from "redux-thunk"
 import rootReducers from "./rootReducers";
 import {UPDATE_AUTH, LOGOUT} from "./auth/auth.constant";
 
-const updateCookies = store => next => action => {
+const updateLocalStorage = store => next => action => {
     if(action.type === UPDATE_AUTH) {
         LocalStorage.setItem('session_id', action.payload.session_id);
     }
@@ -17,4 +17,4 @@ const updateCookies = store => next => action => {
     return next(action);
 }
 
-export const store = createStore(rootReducers, applyMiddleware(thunk, updateCookies));
+export const store = createStore(rootReducers, applyMiddleware(thunk, updateLocalStorage));
