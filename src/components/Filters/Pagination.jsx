@@ -11,7 +11,7 @@ const Pagination = (props) => {
                     Назад
                     </span>
                 </li>
-                <li className={ `page-item ${page === countPage ? 'disabled' : ''}`}>
+                <li className={ `page-item ${page >= countPage ? 'disabled' : ''}`}>
                     <span className="page-link cursor-pointer" onClick={() =>  setPage( prevPage => prevPage+1)}>
                     Вперед
                     </span>
