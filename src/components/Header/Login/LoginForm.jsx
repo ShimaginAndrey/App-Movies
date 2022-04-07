@@ -1,9 +1,11 @@
-import React, { useState, useContext } from "react";
-import {AppContext} from '../../../context/context';
+import React, { useState } from "react";
 import {RequestApi} from '../../../api/api';
 
+import { useDispatch } from "react-redux";
+import { updateAuthAction } from '../../../redux/auth/auth.actions';
+
 const LoginForm = (props) => {
-    const context = useContext(AppContext);
+    const dispatch = useDispatch();
 
     const [userInfoForm, setUserInfo] = useState({
         username: "",
@@ -71,7 +73,7 @@ const LoginForm = (props) => {
                 params: {session_id}
             });
 
-            context.updateAuth(user, session_id);
+            dispatch(updateAuthAction({user, session_id}));
 
         } catch(error) {
             setSubmitting(prevState => !prevState);

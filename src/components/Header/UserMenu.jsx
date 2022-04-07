@@ -1,13 +1,15 @@
-import React, { useState, useContext } from "react";
-import {AppContext} from '../../context/context';
+import React, { useState } from "react";
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import { RequestApi } from "../../api/api";
 import { LocalStorage } from "../../utils/LocalStorage";
 
+import { useDispatch } from "react-redux";
+import { toLogOutAction } from '../../redux/auth/auth.actions';
+
 const UserMenu = (props) => {
     const {user} = props;
     const [dropdownOpen, setDropdown] = useState(false);
-    const context = useContext(AppContext);
+    const dispatch = useDispatch();
 
     const toggleDropdown = () => {
         setDropdown(prevState => !prevState)
@@ -17,7 +19,7 @@ const UserMenu = (props) => {
         RequestApi.delete('/authentication/session', {
             body: { 'session_id': LocalStorage.getItem('session_id')}
         })
-        .then(() => context.LogOut())
+        .then(() => dispatch(toLogOutAction()))
         .catch(error => console.error(error))
     }
     
